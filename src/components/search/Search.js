@@ -1,45 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./Search.css";
-import axios from "axios";
-import SearchHeroList from "./SearchHeroList";
-// import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getSearchNameAction } from "../../store/actions/search";
 
 const Search = ({ history }) => {
-  const [searchHero, setSearchHero] = useState([]);
-  const heroeEncontrado = (name) => {
-    axios
-      .get(`https://superheroapi.com/api.php/10226767840599231/search/${name}`)
-      .then((res) => {
-        const data = res.data.results;
-        console.log(data);
-        setSearchHero(data);
-      });
-  }; // validar si el heroe no se encuentra en la url
-  //  useEffect(() => {
-  //    const getData = async (name) => {
-  //      try {
-  //        const resp = await axios.get(`https://superheroapi.com/api.php/10226767840599231/search/${name}`)
-  //        if (!resp) {
-  //          console.log("no encontramos el heroe");
-  //        } else {
-  //          const data = resp.data.results;
-  //          console.log(data);
-  //          setSearchHero(data);
-
-  //        }
-  //      } catch (error) {
-  //        console.error("Firestore error: ", error);
-
-  //      }
-  //    };
-  //    getData();
-  //  }, []);
+  const dispatch = useDispatch();
+  const submitName = (name) => dispatch(getSearchNameAction(name));
   return (
     <>
       <div className="row">
-        <div className="col-lg-6 col-xs-12 search ">
-          <div className="form-group py-4 px-4">
+        <div className="col-lg-12 col-xs-12 container-instruction px-5 ">
+          <div className="instruction">
+            <h1>Find a hero and build your team now</h1>
+            <p>1-The team must not exceed 6 heroes </p>
+            <p>2-the team must have 3 good and 3 bad heroes </p>
+          </div>
+          <div className="form-group  py-4 px-4">
             <h4 className="mx-4">Search Form </h4>
             <hr />
             <Formik
@@ -55,8 +32,8 @@ const Search = ({ history }) => {
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   setSubmitting(false);
-                  heroeEncontrado(values.name);
-                  // history.push(`/search?q=${values.name}`);
+                  submitName(values.name);
+                  history.push(`/search?q=${values.name}`);
                 }, 400);
               }}
             >
@@ -78,18 +55,6 @@ const Search = ({ history }) => {
                 </Form>
               )}
             </Formik>
-          </div>
-        </div>
-        <div className="col-lg-6 col-xs-12 ">
-          <h1>Comienza a armas tu equipo</h1>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-12 col-xs-12 list">
-          <div className="list-container">
-            {searchHero.map((heroList) => {
-              return <SearchHeroList key={heroList.id} {...{ heroList }} />;
-            })}
           </div>
         </div>
       </div>
