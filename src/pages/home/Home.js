@@ -2,16 +2,23 @@ import React from "react";
 import { useHistory } from "react-router";
 import { Header } from "../../components/header/Header";
 import Search from "../../components/search/Search";
-import TeamHero from "../../components/TeamHero/TeamHero";
+import CheckAuth from "../../components/checkAuth/CheckAuth";
+import ItemList from "../../components/item/ItemList";
+import CardPowerstats from "../../components/card-powerstats/CardPowerstats";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const state = useSelector((state) => state.team);
+  const { teamHero } = state;
+  console.log(teamHero);
   const history = useHistory();
   return (
-    <>
+    <CheckAuth>
       <Header history={history} />
       <Search {...{ history }} />
-      <TeamHero {...{ history }} />
-    </>
+      <CardPowerstats />
+      <ItemList {...{ history }} />
+    </CheckAuth>
   );
 };
 

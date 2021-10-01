@@ -1,8 +1,9 @@
-import { ADD_TO_TEAM, REMOVE_ONE_TEAM, SET_TEAM } from "../types/team";
+import { SET_TEAM, ACUM_POWERSTART } from "../types/team";
 
 // manejo del car de heroes
 const initialState = {
   teamHero: [],
+  acumPowerstart: [],
 };
 
 const teamReducer = (state = initialState, action) => {
@@ -12,15 +13,11 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         teamHero: action.payload,
       };
-    // case ADD_TO_TEAM:
-    //   return {
-    //     ...state,
-    //     teamHero: [...state.teamHero, action.payload],
-    //   };
-    // case REMOVE_ONE_TEAM:
-    //   console.log(action.payload);
-    //   ;
-    //   return { ...state, teamHero: array };
+    case ACUM_POWERSTART:
+      return {
+        ...state,
+        acumPowerstart: action.payload,
+      };
     default:
       return state;
   }

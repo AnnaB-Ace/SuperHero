@@ -5,16 +5,15 @@ import {
   GET_LOGOUT,
 } from "../types";
 
+const token = localStorage.getItem("token");
+
 const initialState = {
   login: {
-    postAuth: {
-      isLoading: false,
-      succes: null,
-      data: null,
-      error: null,
-    },
+    isLoading: false,
+    success: null,
+    token: token || null,
+    error: null,
   },
-  logout: {},
 };
 
 const authReducer = (state = initialState, action) => {
@@ -22,35 +21,43 @@ const authReducer = (state = initialState, action) => {
     case POST_LOGIN_START:
       return {
         ...state,
-        postAuth: {
+        login: {
           isLoading: true,
-          succes: null,
-          data: [],
+          success: null,
+          token: null,
           error: null,
         },
       };
     case POST_LOGIN_SUCCESS:
       return {
         ...state,
-        postAuth: {
+        login: {
           isLoading: false,
-          succes: true,
-          data: action.payload,
+          success: true,
+          token: action.payload,
           error: null,
         },
       };
     case POST_LOGIN_FAILURE:
       return {
         ...state,
-        postAuth: {
+        login: {
           isLoading: false,
-          succes: false,
-          data: [],
+          success: false,
+          data: null,
           error: action.payload,
         },
       };
     case GET_LOGOUT:
-      return {};
+      return {
+        ...state,
+        login: {
+          isLoading: false,
+          success: false,
+          data: null,
+          error: null,
+        },
+      };
 
     default:
       return state;

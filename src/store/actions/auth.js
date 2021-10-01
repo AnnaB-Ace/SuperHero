@@ -2,6 +2,7 @@ import {
   POST_LOGIN_START,
   POST_LOGIN_SUCCESS,
   POST_LOGIN_FAILURE,
+  GET_LOGOUT,
 } from "../types";
 
 import { loginApi } from "../../service/api/auth";
@@ -21,6 +22,10 @@ const getAuthFailure = (error) => ({
   payload: error,
 });
 
+export const logout = () => ({
+  type: GET_LOGOUT,
+});
+
 export const getAuthAction = (user, password) => {
   return async (dispatch) => {
     try {
@@ -28,8 +33,7 @@ export const getAuthAction = (user, password) => {
       const resp = await loginApi(user, password);
       const token = resp.data.token;
       localStorage.setItem("token", token);
-      localStorage.setItem("data", resp.data);
-      dispatch(postAuthSucces(resp.data));
+      dispatch(postAuthSucces(token));
     } catch (err) {
       dispatch(getAuthFailure(err));
     }

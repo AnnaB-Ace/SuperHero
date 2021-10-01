@@ -1,0 +1,78 @@
+.item-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: "Anton", sans-serif;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.item-card {
+  width: 100%;
+  margin: 20px;
+  border-radius: 6px;
+  /* background-color: #fff; */
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0px 1px 10px rgba(61, 58, 58, 0.2);
+  max-width: 250px;
+  height: 470px;
+  cursor: default;
+  transition: all 400ms ease;
+  font-family: sans-serif;
+}
+
+.item-card:hover {
+  box-shadow: 30px 30px 30px rgba(19, 19, 19, 0.2);
+  transform: translateY(-3%);
+}
+.item-image {
+  width: 100%;
+  height: 310px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.item-cardList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.item-description {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100px;
+}
+
+.item-button {
+  outline: none;
+  margin-left: 8px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 2px solid #ffc107;
+  color: #ffc107;
+}
+.item-button:hover {
+  /* background: #f2f56bfd; */
+  background: #00afef5d;
+}
+.heroItem-button {
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-around;
+}

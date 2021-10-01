@@ -8,6 +8,10 @@ body {
   text-decoration: none;
   border: none;
   outline: none;
+  height: 100vh;
+
+  background-color: yellow;
   /* background-color: #141414; */
-  background-color: #000000;
+  /* background-color: #000000; */
+  background-color: #00040e;
 }

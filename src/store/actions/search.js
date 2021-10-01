@@ -20,9 +20,14 @@ export const getSearchNameAction = (name) => {
     try {
       dispatch(getNameStart());
       const resp = await getHeroName(name);
-      dispatch(getNameSuccess(resp.data.results));
+      if (resp.data.response === "success") {
+        dispatch(getNameSuccess(resp.data.results));
+      } else {
+        console.log("no se encontro");
+      }
     } catch (err) {
-      dispatch(getNameFailure(err));
+      // dispatch(getNameFailure(err));
+      // alert(err);
     }
   };
 };

@@ -19,7 +19,7 @@ function App() {
               />
             ))}
 
-            <Redirect to="/login" />
+            <Redirect to="/home" />
           </Switch>
         </React.Suspense>
       </BrowserRouter>

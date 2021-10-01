@@ -1,57 +1,73 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./Search.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSearchNameAction } from "../../store/actions/search";
 
 const Search = ({ history }) => {
   const dispatch = useDispatch();
   const submitName = (name) => dispatch(getSearchNameAction(name));
+  const state = useSelector((state) => state.search);
+  const {
+    getHeroName: { success },
+  } = state;
   return (
     <>
       <div className="row">
-        <div className="col-lg-12 col-xs-12 container-instruction px-5 ">
-          <div className="instruction">
-            <h1>Find a hero and build your team now</h1>
-            <p>1-The team must not exceed 6 heroes </p>
-            <p>2-the team must have 3 good and 3 bad heroes </p>
+        <div className="col-lg-12 col-xs-12 search-instruction my-5 px-5 py-2 ">
+          <div className="search-instruction-text">
+            <h1>FIND A HERO AND BUILD YOUT TEAM NOW </h1>
+            <h2>The team must not exceed 6 heroes the team must have</h2>
+            <h2>3 good and 3 bad heroes</h2>
           </div>
-          <div className="form-group  py-4 px-4">
-            <h4 className="mx-4">Search Form </h4>
-            <hr />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-12 col-xs-12 search">
+          <div className="search-form">
             <Formik
-              className="px-4 py-2"
               initialValues={{ name: "" }}
               validate={(values) => {
                 const errors = {};
                 if (!values.name) {
                   errors.name = "Enter the name of 1 hero";
+                } else if (success === false && values.name) {
+                  history.push(`/search?q=${values.name}`);
+                  errors.name = "Enter the name of 1 hero";
                 }
                 return errors;
               }}
               onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  setSubmitting(false);
-                  submitName(values.name);
+                setSubmitting(false);
+                submitName(values.name);
+                if (success === true && values.name) {
                   history.push(`/search?q=${values.name}`);
-                }, 400);
+                } else if (success === false && values.name) {
+                  console.log("no hemos encontrado un heroe con ese nombre");
+                  history.push("/home");
+                }
               }}
             >
               {({ isSubmitting }) => (
-                <Form>
+                <Form className="form">
                   <Field
                     type="name"
                     name="name"
-                    className="form-control my-3"
+                    className="search-input"
+                    placeholder="Search"
                   />
-                  <ErrorMessage name="name" component="div" />
                   <button
-                    className="btn btn-outline-primary"
+                    className="search-button"
                     type="submit"
                     disabled={isSubmitting}
                   >
                     Submit
                   </button>
+                  <ErrorMessage
+                    className="search-error"
+                    name="name"
+                    component="div"
+                  />
                 </Form>
               )}
             </Formik>
