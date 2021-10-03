@@ -60,7 +60,7 @@ const Item = ({ item, history }) => {
         <button className="item-button" onClick={goToDetail}>
           Ver detalle
         </button>
-        <span onClick={() => handleDelete(id)}>
+        <span className="item-icon" onClick={() => handleDelete(id)}>
           <FontAwesomeIcon size="2x" color="#808080" icon={faTrash} />
         </span>
       </div>

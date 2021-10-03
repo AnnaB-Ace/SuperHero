@@ -69,6 +69,9 @@
 .item-button:hover {
   background: #00afef5d;
 }
+.item-icon {
+  cursor: pointer;
+}
 .heroItem-button {
   padding-top: 8px;
   display: flex;
