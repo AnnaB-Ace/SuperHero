@@ -37,7 +37,6 @@ const countGoodFn = (team) => {
 
 export const teamAction = (item) => {
   return (dispatch, getState) => {
-    console.log("item", item);
     const {
       biography: { alignment },
     } = item;
@@ -46,8 +45,6 @@ export const teamAction = (item) => {
     const team = state.team.teamHero;
     const countBad = countBadFn(team);
     const countGood = countGoodFn(team);
-    console.log("countBad", countBad);
-    console.log("countGood", countGood);
 
     if (team.length === 6) return;
 

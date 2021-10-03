@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import "./CardPowerstats.css";
 
@@ -46,13 +46,15 @@ const CardPowerstats = () => {
   return (
     <div className="row ">
       <div className="col-lg-12 col-xs-12 powerstats ">
-        <div className="powerstats-card" style={{ maxWidth: 250 }}>
-          <p>Intelligence:{AcumInteligence}</p>
-          <p>Power: {AcumPower}</p>
-          <p>Speed:{AcumSpeed}</p>
-          <p>Strength: {AcumStrength}</p>
-          <p>Combat: {AcumCombat}</p>
-        </div>
+        {teamHero.lenght !== 0 && (
+          <div className="powerstats-card" style={{ maxWidth: 250 }}>
+            <p>Intelligence:{AcumInteligence}</p>
+            <p>Power: {AcumPower}</p>
+            <p>Speed:{AcumSpeed}</p>
+            <p>Strength: {AcumStrength}</p>
+            <p>Combat: {AcumCombat}</p>
+          </div>
+        )}
       </div>
     </div>
   );

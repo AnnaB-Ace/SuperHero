@@ -9,15 +9,17 @@
 }
 .detailitem-container-image {
   height: 400px;
-  max-width: 310px;
-  /* background-color: rgba(88, 88, 88, 0.171); */
+  max-width: 350px;
+  padding: 20px;
   background-color: #d9d9d9;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .detailitem-container-info {
+  padding: 20px;
   background-color: #d9d9d9;
+  color: black;
   height: 400px;
   max-width: 350px;
 }
@@ -25,4 +27,9 @@
 .item-image {
   height: 400px;
   width: 100%;
+}
+.alias {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

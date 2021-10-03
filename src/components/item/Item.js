@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeAction } from "../../store/actions/team";
 import "./Item.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { getSearchIDAction } from "../../store/actions/search";
 
 const Item = ({ item, history }) => {
+  const dispatch = useDispatch();
   const {
     name,
     id,
@@ -13,11 +15,13 @@ const Item = ({ item, history }) => {
     powerstats: { intelligence, strength, speed, power, combat, durability },
   } = item;
 
-  const dispatch = useDispatch();
-
   const handleDelete = (ItemId) => dispatch(removeAction(ItemId));
 
-  const goToDetail = () => history.push(`/search/${id}`);
+  useEffect(() => {}, []);
+  const goToDetail = () => {
+    dispatch(getSearchIDAction(id));
+    history.push(`/search/${id}`);
+  };
 
   return (
     <div className="item-card" style={{ maxWidth: 250 }}>

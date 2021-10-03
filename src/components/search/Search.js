@@ -11,6 +11,7 @@ const Search = ({ history }) => {
   const {
     getHeroName: { success },
   } = state;
+
   return (
     <>
       <div className="row">
@@ -33,7 +34,6 @@ const Search = ({ history }) => {
                   errors.name = "Enter the name of 1 hero";
                 } else if (success === false && values.name) {
                   history.push(`/search?q=${values.name}`);
-                  errors.name = "Enter the name of 1 hero";
                 }
                 return errors;
               }}
@@ -42,9 +42,8 @@ const Search = ({ history }) => {
                 submitName(values.name);
                 if (success === true && values.name) {
                   history.push(`/search?q=${values.name}`);
-                } else if (success === false && values.name) {
+                } else if (success === false && !values.name) {
                   console.log("no hemos encontrado un heroe con ese nombre");
-                  history.push("/home");
                 }
               }}
             >

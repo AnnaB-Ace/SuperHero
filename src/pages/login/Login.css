@@ -1,15 +1,7 @@
 .login1 {
-  /* background-color: blueviolet; */
   height: 100vh;
   color: white;
   position: relative;
-  background-color: rgba(128, 128, 128, 0.705);
-  /* background: url("./SHBanner.jpg") no-repeat fixed;
-  background-position: center center !important;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
 }
 .login {
   display: flex;
@@ -18,11 +10,12 @@
 }
 .form-group {
   border: 1px solid gray;
-  border-radius: 33px;
-  background-color: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 6px;
+  background: #ffffff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 400px;
-  color: white;
+  color: black;
 }

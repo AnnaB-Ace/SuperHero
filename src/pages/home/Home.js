@@ -5,12 +5,8 @@ import Search from "../../components/search/Search";
 import CheckAuth from "../../components/checkAuth/CheckAuth";
 import ItemList from "../../components/item/ItemList";
 import CardPowerstats from "../../components/card-powerstats/CardPowerstats";
-import { useSelector } from "react-redux";
 
 const Home = () => {
-  const state = useSelector((state) => state.team);
-  const { teamHero } = state;
-  console.log(teamHero);
   const history = useHistory();
   return (
     <CheckAuth>

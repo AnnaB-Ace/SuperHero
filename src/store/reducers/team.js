@@ -18,6 +18,7 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         teamHero: [],
       };
+
     default:
       return state;
   }

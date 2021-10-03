@@ -2,8 +2,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { getAuthAction } from "../../store/actions/auth";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 import "./Login.css";
+import { useSelector } from "react-redux";
+import MyLoading from "../../components/loading/MyLoading";
 
 const validation = (values) => {
   const errors = {};
@@ -25,11 +26,18 @@ const Login = () => {
   const submit = async (user, password) => {
     dispatch(getAuthAction(user, password));
   };
+  const state = useSelector((state) => state.auth);
+  const {
+    login: { isLoading },
+  } = state;
 
   return (
     <div className="row login1">
       <div className="col-lg-12 col-xs-12 login">
         <div className="form-group px-5">
+          <p>SUPERHERO</p>
+          <p>Bienvenido</p>
+          <p>Inicie sección para continuar:</p>
           <Formik
             className="px-4 py-2"
             initialValues={{ user: "challenge@alkemy.org", password: "react" }}
@@ -55,11 +63,11 @@ const Login = () => {
                 />
                 <ErrorMessage name="password" component="div" />
                 <button
-                  className="btn btn-outline-primary mt-4"
+                  className="btn btn-primary mt-4 form-control"
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Submit
+                  {isLoading ? <MyLoading /> : <span>Submit</span>}
                 </button>
               </Form>
             )}

@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import CheckAuth from "../../components/checkAuth/CheckAuth";
 import "./Detailitem.css";
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 
 const Detailitem = () => {
   const history = useHistory();
-  const [heroId, setHeroId] = useState([]);
-  const { id } = useParams();
-  const state = useSelector((state) => state.team);
-  const { teamHero } = state;
-
+  // const { id } = useParams();
+  const searchID = useSelector((state) => state.search);
+  const { getHeroId } = searchID;
+  const { success, data } = getHeroId;
+  const handleClick = () => history.push("/home");
   useEffect(() => {
-    if (teamHero.length > 0) {
-      const hero = teamHero.find((item) => item.id === id);
-      setHeroId(hero);
-    }
-  }, []);
-
-  const { image, name, work } = heroId;
-  // const { base } = work;
-  // const { height } = appearance;
-  // console.log(base);
-
-  const handleClick = () => history.goBack();
+    localStorage.setItem("dataId", JSON.stringify(data));
+  }, [data]);
 
   return (
     <>
@@ -31,34 +21,48 @@ const Detailitem = () => {
         <div className="container-fluid">
           <div className="row detailitem-container">
             <div className="col-lg-6 col-xs-12 detailitem-container-image">
-              {heroId.image !== undefined && (
+              {success === true && (
                 <img
-                  src={image.url}
+                  src={data.image.url}
                   className="item-image img-fluid"
-                  alt={name}
+                  alt={data.name}
                 />
               )}
-              {/* <img src={url} className="item-image img-fluid" alt={name} /> */}
             </div>
             <div className="col-lg-6 col-xs-12 detailitem-container-info">
               <div className="d">
-                <h1>{name}</h1>
-                {/* {heroId.work !== undefined && <p>{work}</p>} */}
-
-                <p>
-                  Heigth:
-                  {/* {height.map((h, index) => (
-                      <p key={index}>{h}</p>
-                    ))} */}
-                </p>
+                <h1>{data.name}</h1>
+                {success === true && <p>Work: {data.work.base}</p>}
+                <div className="alias">
+                  Aliases:
+                  {success === true &&
+                    data.biography.aliases.map((alias, index) => (
+                      <span key={index}>{alias}</span>
+                    ))}
+                </div>
+                <div className="alias">
+                  Height:
+                  {success === true &&
+                    data.appearance.height.map((h, index) => (
+                      <p key={index}> {h}</p>
+                    ))}
+                </div>
+                <div className="alias">
+                  Weight:
+                  {success === true &&
+                    data.appearance.weight.map((h, index) => (
+                      <p key={index}> {h}</p>
+                    ))}
+                </div>
               </div>
+
+              <button className="btn btn-primary" onClick={handleClick}>
+                Volver
+              </button>
             </div>
           </div>
         </div>
       </CheckAuth>
-      <button className="btn btn-primary" onClick={handleClick}>
-        Volver
-      </button>
     </>
   );
 };
@@ -68,11 +72,11 @@ export default Detailitem;
 // mostrar:, altura, nombre completo, alias, color de ojos y cabello, y su lugar de trabajo.
 // ● Peso.
 // ● Altura.
-// ● Nombre.
-// ● Alias.
+// ● Nombre. ya
+// ● Alias. ya
 // ● Color de ojos.
 // ● Color de cabello.
-// ● Lugar de trabajo.
+// ● Lugar de trabajo. ya
 
 // ● Weight.
 // ● Height.
