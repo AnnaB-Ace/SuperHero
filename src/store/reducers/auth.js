@@ -1,9 +1,4 @@
-import {
-  POST_LOGIN_START,
-  POST_LOGIN_SUCCESS,
-  POST_LOGIN_FAILURE,
-  GET_LOGOUT,
-} from "../types";
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "../types";
 
 const token = localStorage.getItem("token");
 
@@ -18,7 +13,7 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case POST_LOGIN_START:
+    case LOGIN_START:
       return {
         ...state,
         login: {
@@ -28,7 +23,7 @@ const authReducer = (state = initialState, action) => {
           error: null,
         },
       };
-    case POST_LOGIN_SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         login: {
@@ -38,23 +33,23 @@ const authReducer = (state = initialState, action) => {
           error: null,
         },
       };
-    case POST_LOGIN_FAILURE:
+    case LOGIN_FAILURE:
       return {
         ...state,
         login: {
           isLoading: false,
           success: false,
-          data: null,
+          token: null,
           error: action.payload,
         },
       };
-    case GET_LOGOUT:
+    case LOGOUT:
       return {
         ...state,
         login: {
           isLoading: false,
           success: false,
-          data: null,
+          token: null,
           error: null,
         },
       };

@@ -1,41 +1,36 @@
-import {
-  POST_LOGIN_START,
-  POST_LOGIN_SUCCESS,
-  POST_LOGIN_FAILURE,
-  GET_LOGOUT,
-} from "../types";
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "../types";
 
 import { loginApi } from "../../service/api/auth";
 import {} from "../index";
 
-const postAuthStart = () => ({
-  type: POST_LOGIN_START,
+const AuthStart = () => ({
+  type: LOGIN_START,
 });
 
-export const postAuthSucces = (data) => ({
-  type: POST_LOGIN_SUCCESS,
+export const AuthSucces = (data) => ({
+  type: LOGIN_SUCCESS,
   payload: data,
 });
 
-const getAuthFailure = (error) => ({
-  type: POST_LOGIN_FAILURE,
+const AuthFailure = (error) => ({
+  type: LOGIN_FAILURE,
   payload: error,
 });
 
 export const logout = () => ({
-  type: GET_LOGOUT,
+  type: LOGOUT,
 });
 
 export const getAuthAction = (user, password) => {
   return async (dispatch) => {
     try {
-      dispatch(postAuthStart());
+      dispatch(AuthStart());
       const resp = await loginApi(user, password);
       const token = resp.data.token;
       localStorage.setItem("token", token);
-      dispatch(postAuthSucces(token));
+      dispatch(AuthSucces(token));
     } catch (err) {
-      dispatch(getAuthFailure(err));
+      dispatch(AuthFailure(err));
     }
   };
 };

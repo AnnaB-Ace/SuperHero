@@ -1,4 +1,4 @@
-export const POST_LOGIN_START = "[Login] Post auth Start";
-export const POST_LOGIN_SUCCESS = "[Login] Post auth succes";
-export const POST_LOGIN_FAILURE = "[Login] Post auth Failure";
-export const GET_LOGOUT = "[Logout] Get auth Success";
+export const LOGIN_START = "[Login]  auth Start";
+export const LOGIN_SUCCESS = "[Login]  auth succes";
+export const LOGIN_FAILURE = "[Login]  auth Failure";
+export const LOGOUT = "[Logout] auth Success";

@@ -6,3 +6,10 @@ export const getHeroName = async (name) => {
     url: `https://superheroapi.com/api.php/10226767840599231/search/${name}`,
   });
 };
+
+export const getHeroID = async (id) => {
+  return await axios({
+    method: "get",
+    url: `https://superheroapi.com/api.php/10226767840599231/${id}`,
+  });
+};

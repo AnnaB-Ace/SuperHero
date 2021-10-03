@@ -1,13 +1,11 @@
-import { SET_TEAM, ACUM_POWERSTART } from "../types";
+import { SET_TEAM, REMOVE_TEAM_LOCAL_STORAGE } from "../types";
 
 const setTeam = (data) => ({
   type: SET_TEAM,
   payload: data,
 });
-
-const acumPowerstart = (data) => ({
-  type: ACUM_POWERSTART,
-  payload: data,
+export const removeSetTeam = () => ({
+  type: REMOVE_TEAM_LOCAL_STORAGE,
 });
 
 const checkId = (id, teamHero) => {
@@ -74,14 +72,3 @@ export const removeAction = (id) => {
     dispatch(setTeam(newTeam));
   };
 };
-
-export const acumPowerstartAction = (teamHero) => {
-  return (dispatch, getState) => {
-    const state = getState();
-    const team = state.team.teamHero;
-  };
-};
-
-// ver que en agregar el id del item no se encuentre incluido en teamhero
-// revisar la action de eliminar que se daño con los cambios hechos
-//puede ser porque son repetidos, solucionar item 2

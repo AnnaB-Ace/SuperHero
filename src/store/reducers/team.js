@@ -1,9 +1,9 @@
-import { SET_TEAM, ACUM_POWERSTART } from "../types/team";
+import { SET_TEAM, REMOVE_TEAM_LOCAL_STORAGE } from "../types/team";
 
-// manejo del car de heroes
+const data = localStorage.getItem("newTeam");
+const teamHero = data ? JSON.parse(data) : [];
 const initialState = {
-  teamHero: [],
-  acumPowerstart: [],
+  teamHero: teamHero,
 };
 
 const teamReducer = (state = initialState, action) => {
@@ -13,10 +13,10 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         teamHero: action.payload,
       };
-    case ACUM_POWERSTART:
+    case REMOVE_TEAM_LOCAL_STORAGE:
       return {
         ...state,
-        acumPowerstart: action.payload,
+        teamHero: [],
       };
     default:
       return state;

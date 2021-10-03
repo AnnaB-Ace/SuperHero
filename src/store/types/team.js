@@ -1,2 +1,2 @@
 export const SET_TEAM = "[Team] Set Team";
-export const ACUM_POWERSTART = "[Team] Acumulador Team";
+export const REMOVE_TEAM_LOCAL_STORAGE = "[Remove] Set Team";

@@ -5,11 +5,13 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { logout } from "../../store/actions/auth";
 import CheckAuth from "../checkAuth/CheckAuth";
 import { useDispatch } from "react-redux";
+import { removeSetTeam } from "../../store/actions/team";
 
 const Header = ({ title = "SuperHero" }) => {
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(removeSetTeam());
     localStorage.clear();
   };
   return (
