@@ -47,7 +47,6 @@ export const getSearchNameAction = (name) => {
       }
     } catch (err) {
       dispatch(getNameFailure(err));
-      alert(err);
     }
   };
 };
@@ -63,7 +62,6 @@ export const getSearchIDAction = (id) => {
       }
     } catch (err) {
       dispatch(getNameFailure(err));
-      alert(err);
     }
   };
 };

@@ -68,20 +68,3 @@ const Detailitem = () => {
 };
 
 export default Detailitem;
-
-// mostrar:, altura, nombre completo, alias, color de ojos y cabello, y su lugar de trabajo.
-// ● Peso.
-// ● Altura.
-// ● Nombre. ya
-// ● Alias. ya
-// ● Color de ojos.
-// ● Color de cabello.
-// ● Lugar de trabajo. ya
-
-// ● Weight.
-// ● Height.
-// ● Name.
-// ● Aliases.
-// ● Eye color.
-// ● Hair color.
-// ● Workplace.
