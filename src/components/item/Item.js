@@ -25,7 +25,8 @@ const Item = ({ item, history }) => {
 
   return (
     <div className="item-card" style={{ maxWidth: 250 }}>
-      <img src={url} className="item-image img-fluid" alt={name} />
+      <img src={url} className="item-img" alt={name} />
+
       <div className="item-cardList">
         <div className="item-description">
           <span>Combat </span>
@@ -53,10 +54,6 @@ const Item = ({ item, history }) => {
           <span>Power </span>
           <span>{power}</span>
         </div>
-
-        {/* <div onClick={() => addToTeam(id, data)} className="card-button">
-          <FontAwesomeIcon size="2x" color="#808080" icon={faPlusCircle} />
-        </div> */}
       </div>
 
       <div className="heroItem-button">
