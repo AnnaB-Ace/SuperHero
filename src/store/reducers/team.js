@@ -1,9 +1,10 @@
-import { SET_TEAM, REMOVE_TEAM_LOCAL_STORAGE } from "../types/team";
+import { SET_TEAM, REMOVE_TEAM_LOCAL_STORAGE, ERROR_TEAM } from "../types/team";
 
 const data = localStorage.getItem("newTeam");
 const teamHero = data ? JSON.parse(data) : [];
 const initialState = {
   teamHero: teamHero,
+  error: null,
 };
 
 const teamReducer = (state = initialState, action) => {
@@ -13,10 +14,16 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         teamHero: action.payload,
       };
+    case ERROR_TEAM:
+      return {
+        ...state,
+        error: action.payload,
+      };
     case REMOVE_TEAM_LOCAL_STORAGE:
       return {
         ...state,
         teamHero: [],
+        error: null,
       };
 
     default:

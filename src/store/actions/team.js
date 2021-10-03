@@ -1,4 +1,4 @@
-import { SET_TEAM, REMOVE_TEAM_LOCAL_STORAGE } from "../types";
+import { SET_TEAM, REMOVE_TEAM_LOCAL_STORAGE, ERROR_TEAM } from "../types";
 
 const setTeam = (data) => ({
   type: SET_TEAM,
@@ -6,6 +6,10 @@ const setTeam = (data) => ({
 });
 export const removeSetTeam = () => ({
   type: REMOVE_TEAM_LOCAL_STORAGE,
+});
+export const Error = (error) => ({
+  type: ERROR_TEAM,
+  payload: error,
 });
 
 const checkId = (id, teamHero) => {
@@ -46,12 +50,18 @@ export const teamAction = (item) => {
     const countBad = countBadFn(team);
     const countGood = countGoodFn(team);
 
-    if (team.length === 6) return;
+    if (team.length === 6) {
+      dispatch(Error("The team is already full"));
+      return;
+    }
 
-    if (countGood >= 3 && alignment === "good") return;
-
-    if (countBad >= 3 && alignment === "bad") return;
-
+    if (countGood >= 3 && alignment === "good") {
+      dispatch(Error("Exceeded the limit of good superhero"));
+      return countGood;
+    } else if (countBad >= 3 && alignment === "bad") {
+      dispatch(Error("Exceeded the limit of bad superhero"));
+      return countBad;
+    }
     const exist = checkId(item.id, team);
     if (exist) return;
 
