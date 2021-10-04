@@ -77,5 +77,6 @@ export const removeAction = (id) => {
     const team = state.team.teamHero;
     const newTeam = team.filter((item) => item.id !== id);
     dispatch(setTeam(newTeam));
+    dispatch(Error(null));
   };
 };
