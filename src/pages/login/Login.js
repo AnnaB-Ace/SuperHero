@@ -36,8 +36,8 @@ const Login = () => {
       <div className="col-lg-12 col-xs-12 login">
         <div className="form-group px-5">
           <p>SUPERHERO</p>
-          <p>Bienvenido</p>
-          <p>Inicie sección para continuar:</p>
+          <p>Welcome</p>
+          <p>Login to continue:</p>
           <Formik
             className="px-4 py-2"
             initialValues={{ user: "challenge@alkemy.org", password: "react" }}
@@ -54,14 +54,22 @@ const Login = () => {
                   className="form-control my-3"
                   placeholder="@email.com"
                 />
-                <ErrorMessage name="user" component="div" />
+                <ErrorMessage
+                  className="login-error"
+                  name="user"
+                  component="div"
+                />
                 <Field
                   type="password"
                   name="password"
                   className="form-control my-3"
                   placeholder="********"
                 />
-                <ErrorMessage name="password" component="div" />
+                <ErrorMessage
+                  className="login-error"
+                  name="password"
+                  component="div"
+                />
                 <button
                   className="btn btn-primary mt-4 form-control"
                   type="submit"

@@ -30,7 +30,8 @@ export const getAuthAction = (user, password) => {
       localStorage.setItem("token", token);
       dispatch(AuthSucces(token));
     } catch (err) {
-      dispatch(AuthFailure(err));
+      console.log(err);
+      dispatch(AuthFailure("The user is not registered "));
     }
   };
 };

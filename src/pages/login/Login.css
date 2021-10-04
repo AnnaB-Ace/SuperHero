@@ -19,3 +19,8 @@
   height: 400px;
   color: black;
 }
+
+.login-error {
+  background-color: gray;
+  max-width: 220px;
+}
