@@ -18,7 +18,7 @@ const Search = ({ history }) => {
         <div className="col-lg-12 col-xs-12 search-instruction my-5 px-5 py-2 ">
           <div className="search-instruction-text">
             <h1>FIND A HERO AND BUILD YOUT TEAM NOW </h1>
-            <h2>The team must not exceed 6 heroes the team must have</h2>
+            <h2>The team must not exceed 6 heroes, the team must have</h2>
             <h2>3 good and 3 bad heroes</h2>
           </div>
         </div>

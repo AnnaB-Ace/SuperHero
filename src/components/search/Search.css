@@ -70,7 +70,8 @@
 .search-error {
   margin: 10px 0 0 3px;
   text-align: center;
-  color: red;
+  color: #00d7ef5d;
+  font-size: 20px;
 }
 .search-form {
   max-width: 400px;

@@ -35,7 +35,7 @@ const Login = () => {
     <div className="row login1">
       <div className="col-lg-12 col-xs-12 login">
         <div className="form-group px-5">
-          <p>SUPERHERO</p>
+          <p className="title">SUPERHERO</p>
           <p>Welcome</p>
           <p>Login to continue:</p>
           <Formik

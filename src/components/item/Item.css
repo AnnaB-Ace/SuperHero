@@ -78,7 +78,7 @@
   justify-content: space-around;
 }
 .item-list-error {
-  color: red;
-
-  padding: 10px;
+  color: #00d7ef5d;
+  font-size: 20px;
+  padding: 20px;
 }

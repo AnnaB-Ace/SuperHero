@@ -24,3 +24,9 @@
   background-color: gray;
   max-width: 220px;
 }
+
+.title {
+  color: #072e525d;
+  font-family: "Anton", sans-serif;
+  letter-spacing: 0.4em;
+}
