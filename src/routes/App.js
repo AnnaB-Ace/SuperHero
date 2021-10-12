@@ -7,7 +7,9 @@ function App() {
   return (
     <div className="container-fluid containerGlobal">
       <BrowserRouter>
-        <React.Suspense fallback={<div>Cargando ...</div>}>
+        <React.Suspense
+          fallback={<div style={{ color: "white" }}>Cargando ...</div>}
+        >
           <Switch>
             {mainRoutes.map((route, i) => (
               <Route

@@ -28,26 +28,27 @@ const Login = () => {
   };
   const state = useSelector((state) => state.auth);
   const {
-    login: { isLoading },
+    login: { isLoading, error },
   } = state;
 
   return (
     <div className="row login1">
       <div className="col-lg-12 col-xs-12 login">
-        <div className="form-group px-5">
+        <div className="form-group px-5 py-4">
           <p className="title">SUPERHERO</p>
           <p>Welcome</p>
           <p>Login to continue:</p>
           <Formik
-            className="px-4 py-2"
+            className="px-4 py-3"
             initialValues={{ user: "challenge@alkemy.org", password: "react" }}
             validate={(values) => validation(values)}
             onSubmit={(values, { setSubmitting }) => {
               submit(values.user, values.password);
             }}
           >
-            {({ isSubmitting }) => (
+            {() => (
               <Form>
+                {error ? <p className="login-error">{error}</p> : null}
                 <Field
                   type="user"
                   name="user"
@@ -73,7 +74,6 @@ const Login = () => {
                 <button
                   className="btn btn-primary mt-4 form-control"
                   type="submit"
-                  disabled={isSubmitting}
                 >
                   {isLoading ? <MyLoading /> : <span>Submit</span>}
                 </button>
